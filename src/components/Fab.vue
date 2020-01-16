@@ -13,7 +13,9 @@ export default {
 
 <style lang="scss" scoped>
 button {
-    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
     background-color: $primary-color;
 }
 </style>

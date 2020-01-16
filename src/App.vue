@@ -1,27 +1,27 @@
 <template>
   <div id="app">
-    <Fab icon="+"/>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Fab from './components/Fab.vue' 
-
 export default {
   name: 'app',
   components: {
-    Fab,
   }
 }
 </script>
 
-<style>
+<style lang="scss">
+body{
+    margin: 0;
+    background-color: $primary-background-color;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
