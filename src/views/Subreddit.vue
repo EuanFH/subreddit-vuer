@@ -3,10 +3,10 @@
         <nav>
             <h3>Subreddits Vuer</h3>
             <AddSubredditForm compact="true"/>
-            <SubredditList/>
+            <SubredditList />
         </nav>
         <main>
-            <SubredditFeed/>
+            <SubredditFeed :subredditName="$route.params.subreddit"/>
         </main>
     </div>
 </template>

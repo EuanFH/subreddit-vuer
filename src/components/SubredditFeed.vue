@@ -1,15 +1,71 @@
 <template>
-    <section>
-        <Post/>
+    <section v-if="!loading">
+        <Post
+            v-for="post in posts" 
+            :key="post.title"
+            :title="post.title"
+            :timeStamp="post.created"
+            :upvoteCount="post.ups"
+            :thumbnail="post.thumbnail"
+            :postLink="post.url"
+            :commentLink="'https://reddit.com' + post.premalink"/>
     </section>
 </template>
 
 <script>
+    //<p v-if="error">Loading</p>
+    //<p v-if="loading">eror</p>
 import Post from '@/components/Post'
+import axios from 'axios';
+
 export default {
     name: 'SubredditFeed',
+    props: {
+        subredditName: {
+            type: String,
+            required: true
+        }
+    },
+    data() {
+        return {
+            loading: true,
+            error: false,
+            errorValue: undefined,
+            rawPosts: undefined,
+            posts: [],
+        }
+    },
+    computed: {
+        loadedWithNotErrors: function(){
+            return !this.loading && !this.error
+        },
+    },
+    watch: {
+        rawPosts: function (){
+            if(this.rawPosts == undefined){
+                return;
+            }
+            this.posts = this.rawPosts.data.children.map((rawPost)=>{
+                return rawPost.data;
+            }) 
+        }
+    },
     components: {
         Post
+    },
+    created() {
+        //jsonp is a service that adds cors to the request
+        //javascript will block this request even with cors disabled unless i use this service
+        axios.get('https://jsonp.afeld.me/?url=https://reddit.com/r/' + this.subredditName + '/top.json')
+            .then(response => {
+                this.rawPosts = response.data;
+                this.loading = false;
+            })
+            .catch(error => {
+                this.erroValue = error;
+                this.error = true;
+                this.loading = false;
+            });
     }
 }
 </script>

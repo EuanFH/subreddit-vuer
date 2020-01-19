@@ -12,7 +12,7 @@ import TextField from '@/components/TextField';
 import Fab from '@/components/Fab';
 
 export default{
-    name: 'Landing',
+    name: 'AddSubredditForm',
     props: {
         dynamicPlaceholder:{
             type: Boolean,
