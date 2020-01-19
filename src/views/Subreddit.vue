@@ -1,33 +1,47 @@
 <template>
-    <nav>
-        <h3>Subreddits Vuer</h3>
-        <AddSubredditForm compact="true"/>
-        <SubredditList/>
-    </nav>
+    <div class="pageContainer">
+        <nav>
+            <h3>Subreddits Vuer</h3>
+            <AddSubredditForm compact="true"/>
+            <SubredditList/>
+        </nav>
+        <main>
+            <SubredditFeed/>
+        </main>
+    </div>
 </template>
 
 <script>
-import AddSubredditForm from '@/components/AddSubredditForm'
-import SubredditList from '@/components/SubredditList'
+import AddSubredditForm from '@/components/AddSubredditForm';
+import SubredditList from '@/components/SubredditList';
+import SubredditFeed from '@/components/SubredditFeed';
 
 export default{
     name: 'Subreddit',
     components:{
         AddSubredditForm,
         SubredditList,
+        SubredditFeed,
     }
 }
 </script>
 
 <style lang='scss' scoped>
-.subreddit-list{
+.pageContainer{
+    display: flex;
+    direction: row;
+}
+main {
+    flex: 1;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
 }
 
 nav {
     background-color: $secondary-background-color;
     height: 100vh;
     width: 200px;
-
 }
 
 h3 {
