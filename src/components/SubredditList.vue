@@ -1,6 +1,6 @@
 <template>
     <section>
-        <Chip v-for='subreddit in subreddits' :key='subreddit' :label='subreddit' delete='true' />
+        <Chip v-for='subreddit in subreddits' :key='subreddit' class='Chip' :label='subreddit' delete='true' />
     </section>
 </template>
 
@@ -27,6 +27,10 @@ export default{
 section {
     display: flex;
     flex-direction: column;
+}
+
+.Chip{
+    margin-bottom: 10px;
 }
 </style>
 

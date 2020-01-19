@@ -1,6 +1,6 @@
 <template>
     <button @click="$emit.click" class='chip'>
-        {{label}}
+        <p>{{label}}</p>
         <button @click='remove' class='delete'>
             <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                  viewBox="0 0 512.001 512.001" style="enable-background:new 0 0 512.001 512.001;" xml:space="preserve">
@@ -39,6 +39,7 @@ export default{
     display: flex;
     flex-direction: row;
     padding: 1px;
+    margin-right: 5px;
     background-color: $primary-background-color;
     color: $primary-color;
     border: none;
@@ -53,6 +54,11 @@ export default{
     border-radius: 50%;
     background-color: $primary-background-color;
     color: $secondary-color;
+}
+p {
+    padding: 5px 5px 5px 0;
+    margin: 0;
+    margin-left: 5px;
 }
 svg {
     fill: $secondary-color;
