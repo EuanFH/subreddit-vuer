@@ -54,6 +54,7 @@ main {
 .redditIcon {
     max-width: 12.5em;
     margin-bottom: 30px;
+    overflow-y:scroll;
 }
 h1 {
     margin-top: 0px;
