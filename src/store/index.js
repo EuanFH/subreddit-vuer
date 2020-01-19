@@ -11,7 +11,7 @@ export const store = new Vuex.Store({
         subreddits: state => state.subreddits
     },
     mutations: {
-        init: state => {
+        init: function(state) {
             if(!localStorage.getItem('store')){
                 return;
             }
