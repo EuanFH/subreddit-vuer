@@ -12,7 +12,7 @@ export default new Router({
         },
         {
             path: "/r/:subreddit",
-            component: () => import('@/views/SubredditFeed'),
+            component: () => import('@/views/Subreddit'),
         },
         {
             path: "*",

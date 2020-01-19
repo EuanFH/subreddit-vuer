@@ -4,37 +4,30 @@
             <RedditIcon v-if="enter" class="redditIcon"/>
         </transition>
         <h1>Check this out enter a subreddit</h1>
-        <TextFieldDynamicPlaceholder :placeholders="placeholders" @value="setSubredditInputValue" class="textField"/>
-        <AddSubredditButton :subreddit-name="subredditInputValue" @added-subreddit="addedSubreddit"/>
+        <AddSubredditForm @addedSubreddit="addedSubreddit" :placeholders="placeholders" dynamicPlaceholder="true"/>
     </main>
 </template>
 
 <script>
 import router from '@/router'
-import RedditIcon from '@/components/RedditIcon.vue'
-import TextFieldDynamicPlaceholder from '@/components/TextFieldDynamicPlaceHolder.vue'
-import AddSubredditButton from '@/components/AddSubredditButton.vue'
+import RedditIcon from '@/components/RedditIcon'
+import AddSubredditForm from '@/components/AddSubredditForm'
 
 export default{
     name: 'Landing',
     data() {
         return {
-            subredditInputValue: "",
             enter: false,
             placeholders: ["/r/pics", "/r/programming", "/r/games", "/r/vuejs", "/r/webdev"],
         }
     },
     components: {
         RedditIcon,
-        AddSubredditButton,
-        TextFieldDynamicPlaceholder,
+        AddSubredditForm,
     },
     methods: {
         addedSubreddit: function(subreddit){
             router.push(subreddit)      
-        },
-        setSubredditInputValue: function(value){
-            this.subredditInputValue = value;
         }
     },
     mounted() {
