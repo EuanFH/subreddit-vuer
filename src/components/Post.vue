@@ -11,7 +11,7 @@
             <h5>{{title}}</h5>
             <p class='postTime'>Posted {{created}}</p>
         </section>
-        <img v-if="tumbnail" :src="thumbnail"/>
+        <img v-if='tumbnail !== ""' :src="thumbnail"/>
     </article>
 </template>
 
@@ -54,9 +54,13 @@ img{
     align-self: center;
 }
 
-h5{
+h5 {
     color: $primary-color;
     margin: 10px 0;
+    width: 400px;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
     text-overflow: ellipsis;
 }
 
@@ -69,6 +73,7 @@ h5{
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-start;
+    flex: 1;
 }
 
 .postTime{
