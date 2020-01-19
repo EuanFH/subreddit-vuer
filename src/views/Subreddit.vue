@@ -47,6 +47,6 @@ nav {
 h3 {
     margin: 0;
     padding: 10px;
-    color: $secondary-color;
+    color: $primary-color;
 }
 </style>
