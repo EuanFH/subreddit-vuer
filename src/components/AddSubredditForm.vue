@@ -1,8 +1,8 @@
 <template>
     <form @submit.prevent="addSubreddit">
         <TextFieldDynamicPlaceholder v-if='dynamicPlaceholder' :placeholders="placeholders" @value="setSubredditInputValue" class="textField"/>
-        <TextField v-else :placeholder="placeholder" @value="setSubredditInputValue" class="textField"/>
-        <Fab @click="addSubreddit"/>
+        <TextField v-else :placeholder="placeholder" @value="setSubredditInputValue" :class='{compactTextField: compact}'/>
+        <Fab :class='[{"compactFab": compact}, "Fab"]' @click="addSubreddit"/>
     </form>
 </template>
 
@@ -20,6 +20,10 @@ export default{
         },
         placeholder: String,
         placeholders: Array,
+        compact: {
+            type: Boolean,
+            default: false,
+        }
     },
     data() {
         return {
@@ -60,5 +64,17 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.Fab {
+    margin: 10px 0;
+}
+
+.compactFab {
+    width: 35px;
+    height: 35px;
+}
+
+.compactTextField {
+   width: 150px;
 }
 </style>

@@ -1,6 +1,7 @@
 <template>
     <nav>
-        <AddSubredditForm/>
+        <h3>Subreddits Vuer</h3>
+        <AddSubredditForm compact="true"/>
         <SubredditList/>
     </nav>
 </template>
@@ -27,5 +28,11 @@ nav {
     height: 100vh;
     width: 200px;
 
+}
+
+h3 {
+    margin: 0;
+    padding: 10px;
+    color: $secondary-color;
 }
 </style>
