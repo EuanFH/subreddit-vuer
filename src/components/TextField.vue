@@ -29,6 +29,7 @@ export default {
     },
     watch: {
         value: function(value){
+            this.$emit('value', value);
             if(value !== ""){
                 this.hasInput = true;
                 return;

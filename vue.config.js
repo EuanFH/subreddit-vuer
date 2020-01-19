@@ -1,11 +1,14 @@
 const path = require('path')
 module.exports = {
-  pluginOptions: {
-    'style-resources-loader': {
-      'preProcessor': 'scss',
-      'patterns': [
-        path.resolve(__dirname, './src/theme/dark.scss'),
-      ]
+    configureWebpack: {
+        devtool: 'source-map'
+    },
+    pluginOptions: {
+        'style-resources-loader': {
+            'preProcessor': 'scss',
+            'patterns': [
+                path.resolve(__dirname, './src/theme/dark.scss'),
+            ]
+        }
     }
-  }
 }

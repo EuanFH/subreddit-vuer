@@ -1,5 +1,5 @@
 <template>
-    <TextField @focused="handleInUse" @emptyNotFocused="handleNotInUse" :placeholder="currentPlaceholder"/>
+    <TextField @focused="handleInUse" @emptyNotFocused="handleNotInUse" @value="sendValueEvent" :placeholder="currentPlaceholder"/>
 </template>
 
 <script>
@@ -117,8 +117,10 @@ export default {
                 this.shouldRenderPlaceHolder = true;
                 this.init();
             }
-        }
-
+        },
+        sendValueEvent: function(value){
+           this.$emit('value', value); 
+        },
     },
     mounted(){
         this.init()

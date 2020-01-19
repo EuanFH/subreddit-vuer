@@ -4,8 +4,8 @@
             <RedditIcon v-if="enter" class="redditIcon"/>
         </transition>
         <h1>Check this out enter a subreddit</h1>
-        <TextFieldDynamicPlaceholder :placeholders="placeholders" class="textField"/>
-        <Fab icon="+" @click="addSubreddit"/>
+        <TextFieldDynamicPlaceholder :placeholders="placeholders" @value="setSubredditInputValue" class="textField"/>
+        <AddSubredditButton :subreddit-name="subredditInputValue" @added-subreddit="addedSubreddit"/>
     </main>
 </template>
 
@@ -13,24 +13,28 @@
 import router from '@/router'
 import RedditIcon from '@/components/RedditIcon.vue'
 import TextFieldDynamicPlaceholder from '@/components/TextFieldDynamicPlaceHolder.vue'
-import Fab from '@/components/Fab.vue'
+import AddSubredditButton from '@/components/AddSubredditButton.vue'
 
 export default{
     name: 'Landing',
     data() {
         return {
+            subredditInputValue: "",
             enter: false,
             placeholders: ["/r/pics", "/r/programming", "/r/games", "/r/vuejs", "/r/webdev"],
         }
     },
     components: {
         RedditIcon,
-        Fab,
+        AddSubredditButton,
         TextFieldDynamicPlaceholder,
     },
     methods: {
-        addSubreddit: function(){
-            router.push('/r/programming')      
+        addedSubreddit: function(subreddit){
+            router.push(subreddit)      
+        },
+        setSubredditInputValue: function(value){
+            this.subredditInputValue = value;
         }
     },
     mounted() {
