@@ -4,11 +4,13 @@
             v-for="post in posts" 
             :key="post.title"
             :title="post.title"
-            :timeStamp="post.created"
+            :timeStamp="post.created_utc"
             :upvoteCount="post.ups"
             :thumbnail="post.thumbnail"
             :postLink="post.url"
-            :commentLink="'https://reddit.com' + post.premalink"/>
+            :commentLink="'https://reddit.com' + post.premalink"
+            class="Post"
+        />
     </section>
 </template>
 
@@ -73,5 +75,8 @@ export default {
 <style lang="scss" scoped>
 section{
     width: 600px;
+}
+.Post {
+    margin-bottom: 10px;
 }
 </style>

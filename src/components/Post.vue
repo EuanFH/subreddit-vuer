@@ -9,7 +9,7 @@
         <div class="verticalRule"/>
         <section class="middleContainer">
             <h5>{{title}}</h5>
-            <p class='postTime'>Posted {{created}} ago</p>
+            <p class='postTime'>Posted {{created}}</p>
         </section>
         <img v-if="tumbnail" :src="thumbnail"/>
     </article>
@@ -30,7 +30,7 @@ export default {
     },
     computed: {
         created: function (){
-            return moment(this.timeStamp).startOf('day').fromNow();
+            return moment.unix(this.timeStamp).startOf('hours').fromNow();
         }
     }
 }
