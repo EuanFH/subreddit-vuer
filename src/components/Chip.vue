@@ -16,11 +16,6 @@
 <script>
 export default{
     name: "Chip",
-    date() {
-        return{
-            browser: navigator.userAgent.toLowerCase().indexOf('chrome'),
-        }
-    },
     props: {
         label:{
             type: String,
