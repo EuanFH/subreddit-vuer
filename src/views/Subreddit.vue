@@ -2,7 +2,7 @@
     <div class="pageContainer">
         <nav>
             <h3>Subreddits Vuer</h3>
-            <AddSubredditForm compact="true"/>
+            <AddSubredditForm :compact="true"/>
             <SubredditList />
         </nav>
         <main>

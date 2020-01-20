@@ -11,7 +11,7 @@
             <h5>{{title}}</h5>
             <p class='postTime'>Posted {{created}}</p>
         </section>
-        <img v-if='tumbnail !== ""' :src="thumbnail"/>
+        <img v-if='"tumbnail" !== ""' :src="thumbnail"/>
     </article>
 </template>
 
@@ -22,7 +22,7 @@ export default {
     name: 'Post',
     props: {
         title: String,
-        timeStamp: String,
+        timeStamp: Number,
         upvoteCount: Number,
         thumbnail: String,
         postLink: String,

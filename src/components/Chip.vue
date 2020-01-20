@@ -1,5 +1,5 @@
 <template>
-    <button @click="$emit.click" class='chip'>
+    <button @click="clickEvent" class='chip'>
         <p>{{label}}</p>
         <button @click='remove' class='delete'>
             <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -28,7 +28,10 @@ export default{
     },
     methods: {
         remove: () => {
-            this.$emit('remove', this.label)
+            this.$emit('remove', this.label);
+        },
+        clickEvent: ()=>{
+            this.$emit('click');
         }
     }
 }
