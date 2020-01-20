@@ -7,8 +7,8 @@
             :timeStamp="post.created_utc"
             :upvoteCount="post.ups"
             :thumbnail="post.thumbnail"
-            :postLink="post.url"
-            :commentLink="'https://reddit.com' + post.premalink"
+            :postLink="'https://reddit.com' + post.permalink"
+            :imageLink="post.url"
             class="Post"
         />
     </section>
