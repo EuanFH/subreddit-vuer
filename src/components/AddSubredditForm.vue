@@ -2,6 +2,7 @@
     <form @submit.prevent="addSubreddit">
         <TextFieldDynamicPlaceholder v-if='dynamicPlaceholder' :placeholders="placeholders" @value="setSubredditInputValue" class="textField"/>
         <TextField v-else :placeholder="placeholder" @value="setSubredditInputValue" :class='{compactTextField: compact}'/>
+        <p :class='{"visable": errorOccured}'>{{errorText}}</p>
         <Fab :class='[{"compactFab": compact}, "Fab"]' @click="addSubreddit"/>
     </form>
 </template>
@@ -27,6 +28,8 @@ export default{
     },
     data() {
         return {
+            errorOccured: false,
+            errorText: '',
             subredditInputValue: "",
         }
     },
@@ -42,19 +45,24 @@ export default{
         addSubreddit: function(){
             this.subredditInputValue = this.subredditInputValue.toLowerCase();
             if(this.subredditInputValue === ''){
-                this.$emit('error', 'empty');
+                this.error("You need to enter somthing first")
                 return;
             }
             if(this.subredditInputValue.substring(0,3) !== '/r/'){
                 this.subredditInputValue = '/r/' + this.subredditInputValue;
             }
             if(!/^\/r\/[a-z]+$/.test(this.subredditInputValue)){
-                this.$emit('error', 'invalid');
+                this.error("Subreddits only container characters a-z")
                 return;
             }
+            this.errorOccured = false;
             this.$store.commit('addSubreddit', this.subredditInputValue);
             this.$emit('addedSubreddit', this.subredditInputValue); 
         },
+        error: function(text){
+            this.errorText = text;
+            this.errorOccured = true;
+        }
     },
 }
 </script>
@@ -66,7 +74,7 @@ form {
     align-items: center;
 }
 .Fab {
-    margin: 10px 0;
+    margin: 1px 0 5px 0;
 }
 
 .compactFab {
@@ -76,5 +84,15 @@ form {
 
 .compactTextField {
    width: 150px;
+}
+p{
+    text-align: center;
+    visibility: hidden;
+    font-size: xx-small;
+    margin: 1px;
+    color: $danger-color;
+}
+.visable{
+    visibility: visible;
 }
 </style>
