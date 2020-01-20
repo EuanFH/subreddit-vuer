@@ -47,6 +47,7 @@ export default{
     color: $primary-color;
     border: none;
     border-radius: 0 30px 30px 0;
+    cursor: pointer;
 }
 .delete {
     display: flex;
@@ -57,7 +58,15 @@ export default{
     border-radius: 50%;
     background-color: $primary-background-color;
     color: $secondary-color;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
+.delete:hover,
+.delete:hover > svg {
+    border-color: $primary-color;
+    fill: $primary-color;
+}
+
 p {
     padding: 5px 5px 5px 0;
     margin: 0;
@@ -65,5 +74,6 @@ p {
 }
 svg {
     fill: $secondary-color;
+    transition: all 0.2s ease;
 }
 </style>
