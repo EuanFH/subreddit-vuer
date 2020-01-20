@@ -1,5 +1,7 @@
 const path = require('path')
 module.exports = {
+    publicPath: "/subreddit-vuer",
+    outputDir: "docs",
     configureWebpack: {
         devtool: 'source-map'
     },
