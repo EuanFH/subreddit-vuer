@@ -51,8 +51,8 @@ export default{
             if(this.subredditInputValue.substring(0,3) !== '/r/'){
                 this.subredditInputValue = '/r/' + this.subredditInputValue;
             }
-            if(!/^\/r\/[a-z]+$/.test(this.subredditInputValue)){
-                this.error("Subreddits only container characters a-z")
+            if(!/^\/r\/[a-z0-9]+$/.test(this.subredditInputValue)){
+                this.error("Subreddits only container characters a-z and 0-9")
                 return;
             }
             this.errorOccured = false;
