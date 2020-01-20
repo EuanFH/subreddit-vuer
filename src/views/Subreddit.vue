@@ -48,6 +48,8 @@ section {
 }
 
 nav {
+    position: sticky;
+    top: 0;
     background-color: $secondary-background-color;
     height: 100vh;
     width: 200px;
