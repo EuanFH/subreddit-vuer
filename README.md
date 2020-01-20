@@ -1,9 +1,9 @@
 # Subreddit Vuer
 Subreddit Vuer lets you enter subreddits into a list and view their top posts.
 ## Landing Page
-[landing]: https://github.com/EuanFH/subreddit-vuer/raw/master/page_images/landing.png "Landing Page"
+![landing page](https://github.com/EuanFH/subreddit-vuer/raw/master/page_images/landing.png)
 ## Subreddit Page
-[subreddit]: https://github.com/EuanFH/subreddit-vuer/raw/master/page_images/subreddit.png "Subreddit Page"
+![subreddit page](https://github.com/EuanFH/subreddit-vuer/raw/master/page_images/subreddit.png)
 ## Key Decisions
 * Vuex was used to store the subreddit list. This allowed me to store the state in localstorage so when you visited the website again your already entered subreddits would appear. I could have shared state via props but this would have become cumbersom quickly since you can add to the subreddit list in two parts of the application one of which is on a different page than the list. Its learning curve wasn't as steep as I thought and made writing the application easier.
 * Each component in this application was made by me. This was good because I could style them how every I liked and add any event I wanted to them. It had some downsides all the icons where SVGs the support for them is different between browsers, and they can render them completely differently. This lead to a bug on chrome where one of the SVGs would not render. I could fix the issue but it would not be centered and looked really off. Next time for a project such as this I would use vuetify since it would have been way quicker to get up and running with.
