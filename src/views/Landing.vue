@@ -4,7 +4,7 @@
             <RedditIcon v-if="enter" class="redditIcon"/>
         </transition>
         <h1>Check this out enter a subreddit</h1>
-        <AddSubredditForm @addedSubreddit="addedSubreddit" :placeholders="placeholders" dynamicPlaceholder="true"/>
+        <AddSubredditForm @addedSubreddit="addedSubreddit" :placeholders="placeholders" :dynamicPlaceholder="true"/>
     </main>
 </template>
 
