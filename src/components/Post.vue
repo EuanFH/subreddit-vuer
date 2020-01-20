@@ -11,7 +11,7 @@
             <h5>{{title}}</h5>
             <p class='postTime'>Posted {{created}}</p>
         </section>
-        <img v-if='"tumbnail" !== ""' :src='thumbnail' @click.stop='redirectToImage'/>
+        <img v-if='thumbnail' :src='thumbnail' @click.stop='redirectToImage'/>
     </article>
 </template>
 
