@@ -1,17 +1,22 @@
 <template>
-    <section v-if="!loading">
-        <Post
-            v-for="post in posts" 
-            :key="post.title"
-            :title="post.title"
-            :timeStamp="post.created_utc"
-            :upvoteCount="post.ups"
-            :thumbnail="post.thumbnail"
-            :postLink="'https://reddit.com' + post.permalink"
-            :imageLink="post.url"
-            class="Post"
-        />
-    </section>
+    <div>
+        <section v-if="!loading">
+            <Post
+                v-for="post in posts" 
+                :key="post.title"
+                :title="post.title"
+                :timeStamp="post.created_utc"
+                :upvoteCount="post.ups"
+                :thumbnail="post.thumbnail"
+                :postLink="'https://reddit.com' + post.permalink"
+                :imageLink="post.url"
+                class="Post"
+            />
+        </section>
+        <section v-if="loading">
+                <article v-for="(blankPost, index) in blankPosts" :key="index" class="loadingArticle Post"/>
+        </section>
+    </div>
 </template>
 
 <script>
@@ -33,12 +38,14 @@ export default {
             loading: true,
             error: false,
             errorValue: undefined,
+            blankPosts: new Array(25),
             rawPosts: undefined,
             posts: [],
         }
     },
     methods: {
         loadPosts: function(){
+            this.loading = true;
             axios.get('https://jsonp.afeld.me/?url=https://reddit.com/r/' + this.subredditName + '/top.json')
                 .then(response => {
                     this.rawPosts = response.data;
@@ -84,5 +91,18 @@ section{
 }
 .Post {
     margin-bottom: 10px;
+}
+.loadingArticle{
+    width: 100%;
+    height: 100px;
+    background-color: $secondary-color;
+    border-radius: 2px 50px 50px 2px;
+    opacity: 0.5;
+    animation: pulsing 3s infinite;
+}
+@keyframes pulsing{
+    0%   { opacity: 0.5; }
+    50% { opacity: 0.8; }
+    100%   { opacity: 0.5; }
 }
 </style>
