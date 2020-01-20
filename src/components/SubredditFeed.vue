@@ -37,6 +37,20 @@ export default {
             posts: [],
         }
     },
+    methods: {
+        loadPosts: function(){
+            axios.get('https://jsonp.afeld.me/?url=https://reddit.com/r/' + this.subredditName + '/top.json')
+                .then(response => {
+                    this.rawPosts = response.data;
+                    this.loading = false;
+                })
+                .catch(error => {
+                    this.erroValue = error;
+                    this.error = true;
+                    this.loading = false;
+                });
+        }
+    },
     computed: {
         loadedWithNotErrors: function(){
             return !this.loading && !this.error
@@ -50,24 +64,16 @@ export default {
             this.posts = this.rawPosts.data.children.map((rawPost)=>{
                 return rawPost.data;
             }) 
+        },
+        subredditName: function(){
+            this.loadPosts();
         }
     },
     components: {
         Post
     },
     created() {
-        //jsonp is a service that adds cors to the request
-        //javascript will block this request even with cors disabled unless i use this service
-        axios.get('https://jsonp.afeld.me/?url=https://reddit.com/r/' + this.subredditName + '/top.json')
-            .then(response => {
-                this.rawPosts = response.data;
-                this.loading = false;
-            })
-            .catch(error => {
-                this.erroValue = error;
-                this.error = true;
-                this.loading = false;
-            });
+        this.loadPosts();
     }
 }
 </script>
