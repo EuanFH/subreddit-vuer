@@ -25,6 +25,14 @@ export default{
         AddSubredditForm,
         SubredditList,
         SubredditFeed,
+    },
+    beforeMount() {
+        let currentSubreddit = '/r/' + this.$route.params.subreddit
+        let subreddits = this.$store.getters.subreddits
+        if(subreddits.includes(currentSubreddit)){
+            return;
+        }
+        this.$store.commit('addSubreddit', currentSubreddit)
     }
 }
 </script>
