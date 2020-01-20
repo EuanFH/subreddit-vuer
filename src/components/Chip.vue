@@ -1,7 +1,7 @@
 <template>
-    <button @click="clickEvent" class='chip'>
+    <button @click.prevent="clicked" class='chip'>
         <p>{{label}}</p>
-        <button @click='remove' class='delete'>
+        <button @click.prevent='remove' class='delete'>
             <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                  viewBox="0 0 512.001 512.001" style="enable-background:new 0 0 512.001 512.001;" xml:space="preserve">
                     <path d="M294.111,256.001L504.109,46.003c10.523-10.524,10.523-27.586,0-38.109c-10.524-10.524-27.587-10.524-38.11,0L256,217.892
@@ -27,11 +27,11 @@ export default{
         }
     },
     methods: {
-        remove: () => {
+        remove: function() {
             this.$emit('remove', this.label);
         },
-        clickEvent: ()=>{
-            this.$emit('click');
+        clicked: function() {
+            this.$emit('click', this.label);
         }
     }
 }

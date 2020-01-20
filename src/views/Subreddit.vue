@@ -6,7 +6,10 @@
             <SubredditList />
         </nav>
         <main>
-            <SubredditFeed :subredditName="$route.params.subreddit"/>
+            <section>
+                <h1>/r/{{$route.params.subreddit}}</h1>
+                <SubredditFeed :subredditName="$route.params.subreddit"/>
+            </section>
         </main>
     </div>
 </template>
@@ -38,10 +41,20 @@ main {
     justify-content: center;
 }
 
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 nav {
     background-color: $secondary-background-color;
     height: 100vh;
     width: 200px;
+}
+
+h1 {
+    color: $primary-color;
 }
 
 h3 {
